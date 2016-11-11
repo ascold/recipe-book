@@ -12,18 +12,24 @@ private items : Ingredient[] = [];
     
   }
 
-getItems(){
-  return this.items;
-}
-
-setItems(ingredients: Ingredient[]){
-  // ingredients.forEach(function(entry) {
-  //  if(that.items.indexOf(entry) === -1){
-   //    that.items.push(entry);
-  //  }
-  //});
-
-  Array.prototype.push.apply(this.items, ingredients);
-}
+  getItems(){
+    return this.items;
+  }
+  
+  setItems(ingredients: Ingredient[]){
+    Array.prototype.push.apply(this.items, ingredients);
+  }
+  
+  addItem(item:Ingredient){
+    this.items.push(item);
+  }
+  
+  editItem(oldItem:Ingredient, newItem:Ingredient){
+    this.items[this.items.indexOf(oldItem)] = newItem;
+  }
+  
+  deleteItem(item:Ingredient){
+    this.items.splice(this.items.indexOf(item),1);
+  }
 
 }
