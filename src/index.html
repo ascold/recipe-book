@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <title>RecipeBook</title>
@@ -9,8 +10,20 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/app.css">
+  <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBO3_0qBmp7svGrcYR0UndgY0zhqrDWmDc",
+      authDomain: "recipebook-3f0bd.firebaseapp.com",
+      databaseURL: "https://recipebook-3f0bd.firebaseio.com"
+    };
+    firebase.initializeApp(config);
+  </script>
 </head>
+
 <body>
   <rb-root>Loading...</rb-root>
 </body>
+
 </html>

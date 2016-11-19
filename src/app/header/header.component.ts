@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AuthService } from './../shared/auth.service';
 import { RecipeService } from './../recipes/recipe.service';
 import { Recipe } from './../recipes/recipe';
 import { Component } from '@angular/core';
@@ -8,7 +10,9 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent{
 
-  constructor(private recipeService: RecipeService) { }
+  constructor(private recipeService: RecipeService,
+              private authService: AuthService,
+              private router:Router) { }
 
   onStore(){
     this.recipeService.storeData().subscribe(
@@ -19,6 +23,21 @@ export class HeaderComponent{
 
   onFetch(){
     this.recipeService.fetchData();
+  }
+
+  onLogout(){
+    var headerObj = this;
+    this.authService.logout()
+    .then(function(){
+      headerObj.router.navigate(['/signin']);
+    })
+    .catch(function(error){
+      console.log(error)
+    });
+  }
+
+  isAuthenticated(){
+    return this.authService.isAuthenticated();
   }
 
 }
