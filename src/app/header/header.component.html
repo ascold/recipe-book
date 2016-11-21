@@ -21,10 +21,10 @@
           role="button" 
           aria-haspopup="true" 
           aria-expanded="false">Recipe Management<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a (click)="onStore()" style="cursor: pointer;">Store Recipes</a></li>
-            <li><a (click)="onFetch()" style="cursor: pointer;">Retrieve Recipes</a></li>
-            <li *ngIf="isAuthenticated()"><a (click)="onLogout()"  style="cursor: pointer;"> Logout</a></li>
+          <ul class="dropdown-menu"  *ngIf="authenticated()">
+            <li *ngIf="authenticated()" ><a (click)="onStore()" style="cursor: pointer;">Store Recipes</a></li>
+            <li *ngIf="authenticated()" ><a (click)="onFetch()" style="cursor: pointer;">Retrieve Recipes</a></li>
+            <li *ngIf="authenticated()" ><a (click)="onLogout()"  style="cursor: pointer;"> Logout</a></li>
           </ul>
         </li>
       </ul>

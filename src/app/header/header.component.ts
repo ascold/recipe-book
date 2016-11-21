@@ -1,18 +1,26 @@
+import { Subscription } from 'rxjs/Rx';
 import { Router } from '@angular/router';
 import { AuthService } from './../shared/auth.service';
 import { RecipeService } from './../recipes/recipe.service';
 import { Recipe } from './../recipes/recipe';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'rb-header',
   templateUrl: './header.component.html'
 })
-export class HeaderComponent{
+export class HeaderComponent implements OnDestroy{
+
+ isAuthenticated = false;
+ private  subscription: Subscription;
 
   constructor(private recipeService: RecipeService,
               private authService: AuthService,
-              private router:Router) { }
+              private router:Router) { 
+                this.subscription = this.authService.isAuthenticated().subscribe(
+                  authStatus => this.isAuthenticated = authStatus
+                );
+              }
 
   onStore(){
     this.recipeService.storeData().subscribe(
@@ -36,8 +44,12 @@ export class HeaderComponent{
     });
   }
 
-  isAuthenticated(){
-    return this.authService.isAuthenticated();
+  authenticated(){
+    return this.isAuthenticated;
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 
 }

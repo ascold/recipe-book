@@ -1,3 +1,4 @@
+import { AuthGardService } from './shared/auth-gard.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -49,7 +50,7 @@ import { SigninComponent } from './authentication/signin/signin.component';
     ReactiveFormsModule,
     routing
   ],
-  providers: [RecipeService, ShoppingListService, AuthService],
+  providers: [RecipeService, ShoppingListService, AuthService, AuthGardService],
   bootstrap: [AppComponent]
 })
 

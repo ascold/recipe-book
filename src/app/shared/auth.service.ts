@@ -1,5 +1,6 @@
 import { User } from './user.interface';
 import { Injectable } from '@angular/core';
+import { Subject, Observable } from 'rxjs/Rx';
 
 declare var firebase: any;
 
@@ -19,9 +20,12 @@ signinUser(user:User){
   });
 }
 
-isAuthenticated(){
-    var user = firebase.auth().currentUser;
-    return user != null;
+isAuthenticated(): Observable<boolean>{
+  const subject = new Subject<boolean>();
+  firebase.auth().onAuthStateChanged(function(user){
+    subject.next(user != null);
+  }); 
+  return subject.asObservable();
 }
 
 logout(){
