@@ -52,16 +52,15 @@ storeData(){
   return this.http.put('https://recipebook-3f0bd.firebaseio.com/recipes.json', body, {headers: headers});
 }
 
-fetchData(){
-  return this.http.get('https://recipebook-3f0bd.firebaseio.com/recipes.json')
-  .map((response: Response)=> response.json())
-  .subscribe(
-      (data: Recipe[]) => {
-        this.recipes = data;
-        this.recipesChanged.emit(this.recipes);
-      },
-      error=> console.log(error)
-    );
-}
-
+  fetchData(){
+    return this.http.get('https://recipebook-3f0bd.firebaseio.com/recipes.json')
+    .map((response: Response)=> response.json())
+    .subscribe(
+        (data: Recipe[]) => {
+          this.recipes = data;
+          this.recipesChanged.emit(this.recipes);
+        },
+        error=> console.log(error)
+      );
+  }
 }

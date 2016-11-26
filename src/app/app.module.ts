@@ -35,13 +35,13 @@ import { SigninComponent } from './authentication/signin/signin.component';
     RecipeListComponent,
     RecipeItemComponent,
     RecipeDetailComponent,
-    ShoppingListComponent,
-    ShoppingListAddComponent,
     DropdownDirective,
     RecipeEditComponent,
     RecipeStartComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+     ShoppingListComponent,
+    ShoppingListAddComponent
   ],
   imports: [
     BrowserModule,
